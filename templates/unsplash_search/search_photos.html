@@ -1,0 +1,18 @@
+{% extends "your_app/base.html" %}
+
+{% block body %}
+<div class="row" data-page="1" style="height: 300px; overflow: auto;">
+   <div id="results">
+      {% for photo in photos_url %}
+      <button type="button" src="{{ photo }}" onclick="document.getElementById('id_photo_url').value='{{ photo }}'"; return false; style="background-image: url({{ photo }}); background-size: cover; height: 90px; width: 160px; border: 0px;border-radius: 10px;"> </button>
+      {% empty %}
+      {% endfor %}
+   </div>
+   <center> <a hidden class="link" id="lazyLoadLink" href="javascript:void(0);" data-page="1">more...</a></center>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+<script src ={% static "unsplash_search/js/search_photos.js" %}> </script>
+{% endblock %}
